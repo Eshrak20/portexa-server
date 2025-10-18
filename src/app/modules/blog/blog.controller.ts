@@ -12,7 +12,7 @@ const createBlog = catchAsync(
     sendResponse(res, {
       success: true,
       statusCode: httpStatus.CREATED,
-      message: "User created successfully",
+      message: "Blog created successfully",
       data: result,
     });
   }

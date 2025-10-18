@@ -3,6 +3,7 @@ import cors from 'cors';
 import notFound from './app/middlewares/notFound';
 import { envVars } from "./app/config/env";
 import { globalErrorHandler } from './app/middlewares/globalErrorHandler';
+import { router } from './app/routes';
 
 const app: Application = express();
 app.use(cors({
@@ -14,7 +15,6 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.get('/', (req: Request, res: Response) => {
     res.send({
         message: "Server is running..",
@@ -23,6 +23,7 @@ app.get('/', (req: Request, res: Response) => {
         timeStamp: new Date().toISOString()
     })
 });
+app.use("/api/v1", router);
 
 
 app.use(globalErrorHandler);

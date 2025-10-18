@@ -1,0 +1,27 @@
+// schema.prisma (excerpt)
+enum ProjectStatus {
+  draft
+  published
+  archived
+}
+
+model Project {
+  id               Int            @id @default(autoincrement())
+  title            String
+  slug             String         @unique
+  short_description String
+  description      String
+  features         String[]       // array of feature strings
+  technologies     String[]       // array of technology strings
+  thumbnail        String
+  screenshots      String[]       // use String if you truly want a single string
+  video_link       String?
+  github_link      String?
+  category         String
+  live_link        String?
+  status           ProjectStatus  @default(draft)
+  is_featured      Boolean        @default(false)
+  views            Int?           @default(0)
+  created_at       DateTime       @default(now())
+  updated_at       DateTime       @updatedAt
+}
