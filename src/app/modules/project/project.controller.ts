@@ -8,7 +8,6 @@ import { ProjectServices } from "./project.service";
 const createProject = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const result = await ProjectServices.createProject(req.body);
-
     sendResponse(res, {
       success: true,
       statusCode: httpStatus.CREATED,
@@ -18,6 +17,6 @@ const createProject = catchAsync(
   }
 );
 
-export const UserControllers = {
+export const ProjectControllers = {
   createProject,
 };
