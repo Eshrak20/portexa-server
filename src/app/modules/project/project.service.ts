@@ -2,9 +2,10 @@
 
 import { IProject } from "./project.type";
 import { prisma } from "../../config/db";
+import { Prisma } from "@prisma/client";
 
 
-const createProject = async (payload: Partial<IProject>) => {
+const createProject = async (payload: Prisma.ProjectCreateInput) => {
   const createProject = await prisma.project.create({
     data: payload
   })

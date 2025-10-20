@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model Blog {
+  id        Int       @id @default(autoincrement())  // auto-generated ID
+  title      String
+  slug       String   @unique
+  content    String
+  thumbnail  String
+  category   String[] // PostgreSQL TEXT[]
+  tags       String[] // PostgreSQL TEXT[]
+  status     Status   @default(DRAFT)
+  read_time  String?
+  views      Int      @default(0)
+  likes      Int      @default(0)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+
+enum ProjectStatus {
+  draft
+  published
+  archived
+}
+
+model Project {
+  id                Int           @id @default(autoincrement())
+  title             String
+  slug              String        @unique
+  short_description String
+  description       String
+  features          String[] // array of feature strings
+  technologies      String[] // array of technology strings
+  thumbnail         String
+  screenshots       String[] // use String if you truly want a single string
+  video_link        String?
+  github_link       String?
+  category          String
+  live_link         String?
+  status            ProjectStatus @default(draft)
+  is_featured       Boolean       @default(false)
+  views             Int?          @default(0)
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @updatedAt
+}
+
+
+
+
+
+

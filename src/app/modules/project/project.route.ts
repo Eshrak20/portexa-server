@@ -11,11 +11,11 @@ router.post(
   validateRequest(createProjectZodSchema),
   ProjectControllers.createProject
 );
-router.get(
-  "/",
-  validateRequest(createProjectZodSchema),
-  ProjectControllers.createProject
-);
+// router.get(
+//   "/",
+//   validateRequest(createProjectZodSchema),
+//   ProjectControllers.createProject
+// );
 
 
 export const ProjectRoutes = router;
