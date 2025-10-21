@@ -11,11 +11,22 @@ router.post(
   validateRequest(createProjectZodSchema),
   ProjectControllers.createProject
 );
-// router.get(
-//   "/",
-//   validateRequest(createProjectZodSchema),
-//   ProjectControllers.createProject
-// );
+router.get(
+  "/",
+  ProjectControllers.getAllProject
+);
+router.get(
+  "/:id",
+  ProjectControllers.getSingleProject
+);
+router.delete(
+  "/:id",
+  ProjectControllers.deleteProject
+);
+router.patch(
+  "/:id",
+  ProjectControllers.updateProject
+);
 
 
 export const ProjectRoutes = router;

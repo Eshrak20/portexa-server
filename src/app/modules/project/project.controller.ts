@@ -16,7 +16,61 @@ const createProject = catchAsync(
     });
   }
 );
+const getAllProject = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await ProjectServices.getAllProject();
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Project retrieved successfully",
+      data: result,
+    });
+  }
+);
+const getSingleProject = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const convertedId = Number(req.params.id);
+    const result = await ProjectServices.getSingleProject(convertedId);
+
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Single Project retrieved successfully",
+      data: result,
+    });
+  }
+);
+const deleteProject = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const convertedId = Number(req.params.id);
+    const result = await ProjectServices.deleteProject(convertedId);
+
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Single Project deleted successfully",
+      data: result,
+    });
+  }
+);
+const updateProject = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const convertedId = Number(req.params.id);
+    const result = await ProjectServices.updateProject(convertedId, req.body);
+
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Project updated successfully",
+      data: result,
+    });
+  }
+);
 
 export const ProjectControllers = {
   createProject,
+  getAllProject,
+  getSingleProject,
+  deleteProject,
+  updateProject,
 };
