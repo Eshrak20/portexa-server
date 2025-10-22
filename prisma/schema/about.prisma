@@ -1,0 +1,12 @@
+model About {
+    id          Int      @id @default(autoincrement())
+    title       String
+    description String   @db.Text
+    image       String
+    cv_link     String
+
+    // One-to-many relations
+    skills      Skill[]
+    educations  Education[]
+    experiences Experience[]
+}

@@ -1,0 +1,16 @@
+model Education {
+    id        Int      @id @default(autoincrement())
+    name      String
+    link      String
+    icon      String
+    institute String
+    start     DateTime
+    end       DateTime
+
+    // Foreign key connecting back to About
+    aboutId Int
+    about   About @relation(fields: [aboutId], references: [id])
+
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+}

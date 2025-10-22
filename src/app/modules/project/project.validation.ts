@@ -52,11 +52,11 @@ export const createProjectZodSchema = z.object({
     .min(2, { message: "Category must be at least 2 characters long." }),
 
   live_link: z
-    .string({ message: "Live link must be a string" })
     .url({ message: "Live link must be a valid URL." })
     .optional(),
 
-  status: z.enum(["draft", "published", "archived"]),
+  status: z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]).optional(),
+
 
 
   is_featured: z
@@ -114,7 +114,6 @@ export const updateProjectZodSchema = z.object({
     .optional(),
 
   video_link: z
-    .string({ message: "Video link must be a string" })
     .url({ message: "Video link must be a valid URL." })
     .optional(),
 
