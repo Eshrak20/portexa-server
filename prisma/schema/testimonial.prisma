@@ -1,0 +1,8 @@
+model Testimonial {
+    id          Int    @id @default(autoincrement())
+    name        String
+    designation String
+    avatar      String
+    rating      String
+    feedback    String
+}

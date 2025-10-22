@@ -1,0 +1,11 @@
+model View {
+    id               Int      @id @default(autoincrement())
+    ip_address       String
+    duration_seconds String
+    viewed_at        DateTime @default(now())
+    created_at       DateTime @default(now())
+
+    // Relation (many Views → 1 Blog)
+    blogId Int
+    blog Blog @relation(fields: [blogId], references: [id])
+}

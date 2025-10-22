@@ -1,21 +1,25 @@
-model Blog {
-  id        Int       @id @default(autoincrement())  // auto-generated ID
-  title      String
-  slug       String   @unique
-  content    String   @db.Text
-  thumbnail  String
-  category   String[] // PostgreSQL TEXT[]
-  tags       String[] // PostgreSQL TEXT[]
-  status     Status   @default(DRAFT)
-  read_time  String?
-  views      Int      @default(0)
-  likes      Int      @default(0)
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-}
-
 enum Status {
   DRAFT
   PUBLISHED
   ARCHIVED
+}
+
+model Blog {
+  id         Int       @id @default(autoincrement()) // auto-generated ID
+  title      String
+  slug       String    @unique
+  content    String    @db.Text
+  thumbnail  String
+  category   String[] // PostgreSQL TEXT[]
+  tags       String[] // PostgreSQL TEXT[]
+  status     Status    @default(DRAFT)
+  read_time  String?
+  views      Int       @default(0)
+  likes      Int       @default(0)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  // Relation field (1 Blog → many Views,Likes,Comments)
+  view       View[]
+  like       Like[]
+  comment    Comment[]
 }

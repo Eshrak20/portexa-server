@@ -1,0 +1,7 @@
+model Achievements {
+    id   Int    @id @default(autoincrement())
+    institute String
+    link String
+    icon String
+    date DateTime
+}

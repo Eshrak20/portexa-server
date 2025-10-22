@@ -1,0 +1,21 @@
+model Analytics {
+  id               Int      @id @default(autoincrement())
+  session_id       String   // Usually alphanumeric session token
+  ip_address       String   // IP as string (e.g., "192.168.0.1")
+  country          String?  // Optional - may not always detect
+  city             String?  // Optional
+  device_type      String?  // e.g., "desktop", "mobile"
+  browser          String?  // e.g., "Chrome", "Firefox"
+  os               String?  // e.g., "Windows", "Android"
+  page_visited     String   // e.g., "/about" or full URL
+  referrer         String?  // Source page or external referrer
+  duration_seconds Int?     // Duration user spent (in seconds)
+  scroll_depth     Float?   // Scroll percentage (0–100)
+  clicks_count     Int?     // Number of clicks recorded
+  created_at       DateTime @default(now())  // Auto timestamp
+  utm_source       String?  // e.g., "google"
+  utm_medium       String?  // e.g., "cpc", "email"
+  utm_campaign     String?  // e.g., "summer_sale"
+  is_unique_visit  Boolean  // True if first time visitor
+  exit_page        String?  // Page from which user exited
+}

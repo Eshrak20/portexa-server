@@ -5,6 +5,8 @@ import { AboutRoutes } from "../modules/about/about.route";
 import { EducationRoutes } from "../modules/education/education.route";
 import { SkillRoutes } from "../modules/skill/skill.route";
 import { ExperienceRoutes } from "../modules/experience/experience.route";
+import { SocialLinkRoutes } from "../modules/socialLink/socialLink.route";
+import { TestimonialRoutes } from "../modules/testimonial/testimonial.route";
 
 export const router = Router();
 
@@ -32,6 +34,14 @@ const moduleRoutes = [
   {
     path: "/experience",
     route: ExperienceRoutes,
+  },
+  {
+    path: "/social-links",
+    route: SocialLinkRoutes,
+  },
+  {
+    path: "/testimonials",
+    route: TestimonialRoutes,
   },
 ];
 
