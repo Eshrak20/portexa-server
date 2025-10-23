@@ -7,6 +7,10 @@ import { SkillRoutes } from "../modules/skill/skill.route";
 import { ExperienceRoutes } from "../modules/experience/experience.route";
 import { SocialLinkRoutes } from "../modules/socialLink/socialLink.route";
 import { TestimonialRoutes } from "../modules/testimonial/testimonial.route";
+import { MessageRoutes } from "../modules/message/message.route";
+import { LikeRoutes } from "../modules/like/like.route";
+import { CommentRoutes } from "../modules/comment/comment.route";
+import { ViewRoutes } from "../modules/view/view.route";
 
 export const router = Router();
 
@@ -42,6 +46,22 @@ const moduleRoutes = [
   {
     path: "/testimonials",
     route: TestimonialRoutes,
+  },
+  {
+    path: "/message",
+    route: MessageRoutes,
+  },
+  {
+    path: "/likes",
+    route: LikeRoutes,
+  },
+  {
+    path: "/comments",
+    route: CommentRoutes,
+  },
+  {
+    path: "/views",
+    route: ViewRoutes,
   },
 ];
 
